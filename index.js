@@ -24,7 +24,7 @@ mongoose.connect('mongodb://localhost:27017/scouting')
 
 //routes
 app.use('/api/jogadores', jogadores);
-app.use('/', home);
+app.use('/api/home', home);
 
 const port = process.env.port || 3000;
 app.listen(port, () => console.log(`Server iniciado na porta: ${port}`));

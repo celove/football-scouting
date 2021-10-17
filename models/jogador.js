@@ -10,3 +10,4 @@ const jogadorSchema = new mongoose.Schema({
 const Jogador = mongoose.model('jogadores', jogadorSchema);
 
 exports.Jogador = Jogador;
+exports.jogadorSchema = jogadorSchema;
