@@ -6,12 +6,23 @@ const _ = require('lodash');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const config = require('config');
+const auth = require('../middleware/auth');
 
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
     try {
 
         let usuarios = await Usuario.find();
         res.status(200).send(usuarios);
+    } catch (err) {
+        console.log('error: ', err);
+        res.status(404).send(err)
+    }
+});
+
+router.get('/me', auth, async (req, res) => {
+    try {
+        let usuario = await Usuario.findById(req.usuario._id).select('-senha');
+        res.status(200).send(usuario);
     } catch (err) {
         console.log('error: ', err);
         res.status(404).send(err)
