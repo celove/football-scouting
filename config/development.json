@@ -2,5 +2,6 @@
     "name": "Football Scouting Development",
     "mail": {
         "host": "dev-mail-server"
-    }
+    },
+    "jwtPrivateKey": "minhaChaveSecreta"
 }

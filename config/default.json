@@ -1,3 +1,4 @@
 {
-    "name": "Football Scouting"
+    "name": "Football Scouting",
+    "jwtPrivateKey": "minhaChaveSecreta"
 }
