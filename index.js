@@ -4,14 +4,19 @@ const express = require('express');
 const app = express();
 const jogadores = require('./routes/jogadores');
 const home = require('./routes/home');
+const usuarios = require('./routes/usuarios');
+const auth = require('./routes/auth');
 const mongoose = require('mongoose');
+
 //Configuration
 console.log('Application name: ' + config.get('name'));
-
-if (app.get('env' === 'development')) {
+if (!config.get('jwtPrivateKey')) {
+    console.error('Fatal ERROR: jwtPrivateKey não está definida');
+    process.exit(1);
+}
+if (app.get('env') === 'development') {
     console.log('Running on dev');
 }
-
 app.use(morgan('tiny'));
 app.use(express.json());
 
@@ -25,6 +30,8 @@ mongoose.connect('mongodb://localhost:27017/scouting')
 //routes
 app.use('/api/jogadores', jogadores);
 app.use('/api/home', home);
+app.use('/api/usuarios', usuarios);
+app.use('/api/auth', auth);
 
 const port = process.env.port || 3000;
 app.listen(port, () => console.log(`Server iniciado na porta: ${port}`));

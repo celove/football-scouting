@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
     let artigoRecebido = req.body;
-    let artigoCriado = criaArtigo(artigoRecebido.titulo, artigoRecebido.texto, artigoRecebido.jogador);
+    let artigoCriado = await criaArtigo(artigoRecebido.titulo, artigoRecebido.texto, artigoRecebido.jogador);
     if (artigoCriado) {
         res.status(200).send(artigoRecebido);
     } else {
