@@ -5,12 +5,11 @@ const router = express.Router();
 const _ = require('lodash');
 const bcrypt = require('bcrypt');
 const Joi = require('joi');
-const jwt = require('jsonwebtoken');
-const config = require('config');
+// const jwt = require('jsonwebtoken');
+// const config = require('config');
 
 router.get('/', async (req, res) => {
     try {
-
         let usuarios = await Usuario.find();
         res.status(200).send(usuarios);
     } catch (err) {
@@ -33,8 +32,7 @@ router.post('/', async (req, res) => {
         if (!senhaValida) {
             return res.status(400).send('Email ou senha inválidos.');
         }
-
-        const token = jwt.sign({ _id: usuario.id }, config.get('jwtPrivateKey'));
+        const token = usuario.generateAuthToken();
         res.send(token);
 
     } catch (err) {
