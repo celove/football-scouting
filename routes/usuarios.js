@@ -7,10 +7,10 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const auth = require('../middleware/auth');
+const admin = require('../middleware/admin');
 
 router.get('/', auth, async (req, res) => {
     try {
-
         let usuarios = await Usuario.find();
         res.status(200).send(usuarios);
     } catch (err) {
@@ -19,7 +19,7 @@ router.get('/', auth, async (req, res) => {
     }
 });
 
-router.get('/me', auth, async (req, res) => {
+router.get('/me', [auth, admin], async (req, res) => {
     try {
         let usuario = await Usuario.findById(req.usuario._id).select('-senha');
         res.status(200).send(usuario);
@@ -29,7 +29,7 @@ router.get('/me', auth, async (req, res) => {
     }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', auth, async (req, res) => {
     try {
         const { error } = validate(req.body);
         if (error) {
