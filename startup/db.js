@@ -1,8 +1,9 @@
 
 const mongoose = require('mongoose');
+const config = require('config');
 
 module.exports = function () {
-    mongoose.connect('mongodb://localhost:27017/scouting')
+    mongoose.connect(config.get('db_url'))
         .then(() => {
             console.log('connected to MongoDB...');
         })
