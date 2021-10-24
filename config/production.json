@@ -2,5 +2,7 @@
     "name": "Football Scouting Production",
     "mail": {
         "host": "mail@mail.com"
-    }
+    },
+    "jwtPrivateKey": "minhaChaveSecreta",
+    "db_url": "mongodb+srv://admin_mongo:ntde6oMkaMaKcaAB@football-scouting.to85z.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 }

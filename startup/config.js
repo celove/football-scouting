@@ -8,4 +8,5 @@ module.exports = function (app) {
         console.error('Fatal ERROR: jwtPrivateKey não está definida');
         process.exit(1);
     }
+    console.log('Conectado na db_url:' + config.get('db_url'));
 }
