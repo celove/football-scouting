@@ -3,5 +3,6 @@
     "mail": {
         "host": "dev-mail-server"
     },
-    "jwtPrivateKey": "minhaChaveSecreta"
+    "jwtPrivateKey": "minhaChaveSecreta",
+    "db_url": "mongodb://localhost:27017/scouting"
 }
