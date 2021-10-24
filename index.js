@@ -7,4 +7,4 @@ require('./startup/config')(app);
 require('express-async-errors');
 
 const port = process.env.port || 3000;
-app.listen(port, () => console.log(`Server iniciado na porta: ${port}`));
+app.listen(port, () => console.log(`Server iniciado na porta: ${port}.`));
