@@ -7,9 +7,6 @@
     "test": "jest --watchAll",
     "start": "node index.js"
   },
-  "engines": {
-    "node": "14.16.1"
-  },
   "jest": {
     "testEnvironment": "node",
     "coveragePathIgnorePatterns": [
