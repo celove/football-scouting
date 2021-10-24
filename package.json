@@ -1,18 +1,30 @@
 {
   "name": "football-scouting",
   "version": "1.0.0",
-  "description": "",
+  "description": "Backend para site de scouting de jogadores. ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --watchAll",
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "14.16.1"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   },
   "author": "Marcelo Mendes",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "compression": "^1.7.4",
     "config": "^3.3.6",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
+    "helmet": "^4.6.0",
     "joi": "^17.4.2",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
@@ -20,6 +32,7 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "jest": "^27.3.1",
     "nodemon": "^2.0.13"
   }
 }
