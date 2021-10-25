@@ -2,12 +2,11 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 
+app.use(cors());
 require('./startup/rotas')(app);
 require('./startup/db')();
 require('./startup/config')(app);
 require('express-async-errors');
-
-app.use(cors());
 
 console.log(process.env);
 const port = process.env.PORT || 3000;
