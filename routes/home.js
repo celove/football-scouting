@@ -1,6 +1,7 @@
 
 const express = require('express');
 const { Artigo } = require('../models/artigo');
+const { Jogadores, criaJogador } = require('../routes/jogadores');
 const router = express.Router();
 
 router.get('/', async (req, res) => {
@@ -24,7 +25,8 @@ router.post('/', async (req, res) => {
     }
 });
 
-async function criaArtigo(titulo, texto, jogador) {
+async function criaArtigo(titulo, texto, novoJogador) {
+    const jogador = await criaJogador(novoJogador.nome, novoJogador.posicoes, novoJogador.dataNascimento);
     const artigo = new Artigo({
         titulo: titulo,
         texto: texto,

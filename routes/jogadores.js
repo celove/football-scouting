@@ -42,4 +42,5 @@ async function criaJogador(nome, posicoes, dataNascimento) {
     return result;
 }
 
-module.exports = router;
+module.exports.router = router;
+module.exports.criaJogador = criaJogador;
