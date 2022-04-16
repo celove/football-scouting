@@ -15,6 +15,16 @@ router.get('/', async (req, res, next) => {
 
 });
 
+router.get('/:id', async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        let jogador = await Jogador.findById(id);
+        res.send(jogador);
+    } catch (error) {
+        next(error);
+    }
+});
+
 router.post('/', auth, async (req, res) => {
     try {
         let jogadorEnviado = req.body;
