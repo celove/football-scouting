@@ -22,14 +22,17 @@ router.post('/', async (req, res) => {
     try {
         const { error } = validate(req.body);
         if (error) {
+            console.log("Erro ao validar body da requisicao de auth");
             return res.status(400).send(error.details[0].message);
         }
         let usuario = await Usuario.findOne({ email: req.body.email });
         if (!usuario) {
-            return res.status(400).send('Email ou senha inválidos.');
+            console.log("Usuário não encontrado");
+            return res.status(400).send('Usuário não encontrado.');
         }
         const senhaValida = await bcrypt.compare(req.body.senha, usuario.senha);
         if (!senhaValida) {
+            console.log("Email ou senha inválidos");
             return res.status(400).send('Email ou senha inválidos.');
         }
         const token = usuario.generateAuthToken();
